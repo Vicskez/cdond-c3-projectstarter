@@ -4,7 +4,7 @@ commands:
   install_ansible:
     description: Install Ansible dependencies
     steps:
-      -run:
+      - run:
           name: Install Ansible
           command: |
             sudo apt update
