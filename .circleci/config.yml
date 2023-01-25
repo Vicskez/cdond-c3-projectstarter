@@ -33,7 +33,7 @@ commands:
     parameters:
       WORKFLOW_ID:
         default: "${CIRCLE_WORKFLOW_ID:0:7}"
-        Type: string     
+        type: string     
     steps:
       - run:
           name: Revert migrations
