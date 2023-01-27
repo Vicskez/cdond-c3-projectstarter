@@ -270,15 +270,11 @@ jobs:
       - attach_workspace:
           at: ~/
 
-    description: Install dependencies
-      -run:
+      # name: Install dependencies
       - install_nodejs
       - install_awscli
       - install_ansible
-      # - run:
-      #     name: Install dependencies
-      #     command: |
-      #       # your code here
+    
       - run:
           name: Get backend url
           command: |
@@ -313,8 +309,7 @@ jobs:
       - attach_workspace:
           at: ~/
 
-    description: Install dependencies
-      -run:
+      # name: Install dependencies
       - install_nodejs
       - install_awscli
       - install_ansible
