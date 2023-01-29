@@ -1,10 +1,23 @@
 ---
-- name: "Extract zipped artifact"
+- name: "Create directory"
+  file: 
+    path: ~/backendapp
+    state: directory
+
+- name: "Extract zipped artifact"  
   unarchive:
     src: artifact.tar.gz
+    dest: ~/backendapp
 
 - name: "Installing Dependencies"
   shell: |
+    cd ~/backendapp
+    npm i
+- name: "Using PM2 to execute node app"
+  shell: |
+    cd ~/backendapp/dist
+
+    cd ../
     npm install
     npm run build
 
@@ -12,7 +25,11 @@
     sudo npm install ts-node -g 
     forever start -c "ts-node -r tsconfig-paths/register -r dotenv/config src/main.ts" ./
     
-  #register: execute_node
+  register: execute_node
+
+- name: print message
+  debug:
+    msg: "{{ execute_node.stdout_lines }}"
 
 - name: "Pm2 service restart"
   become: true
