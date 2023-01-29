@@ -1,21 +1,21 @@
 ---
 - name: "Create directory"
   file: 
-    path: ~/backendapp
+    path: ~/backend
     state: directory
 
 - name: "Extract zipped artifact"  
   unarchive:
     src: artifact.tar.gz
-    dest: ~/backendapp
+    dest: ~/backend
 
 - name: "Installing Dependencies"
   shell: |
-    cd ~/backendapp
+    cd ~/backend
     npm i
 - name: "Using PM2 to execute node app"
   shell: |
-    cd ~/backendapp/dist
+    cd ~/backend/dist
 
     cd ../
     npm install
