@@ -9,8 +9,6 @@
 #     - ansible_stdout_callback: yaml
 #   roles:
 #     - deploy
-
----
 - name: "configuration play." 
   hosts: web
   user: ubuntu
