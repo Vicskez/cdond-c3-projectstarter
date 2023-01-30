@@ -1,14 +1,14 @@
 ---
 - name: "install python for Ansible."
   become: true
-  raw: test -e /usr/bin/python3 || (apt -y update && apt install -y pyhton3)
+  raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3)
   changed_when: false
 
 - name: "Add Node.js from source"
   become: true
   shell: |
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-- name: "Install Node.js 14"
+    curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+- name: "Install Node.js 13"
   become: true
   apt: 
     name: ["nodejs"]
