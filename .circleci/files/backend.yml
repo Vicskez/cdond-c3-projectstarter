@@ -22,10 +22,40 @@ Resources:
           ToPort: 3030
           CidrIp: 0.0.0.0/0
 
+  EC2Role:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Path: /
+      Policies:
+        - PolicyName: EC2S3ReadAcess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action: S3:GetObject
+              Resource: arn:aws:s3:::udapeople-845827442971/*
+  EC2InstanceProfile:
+    Type: 'AWS::IAM::InstanceProfile'
+    Properties:
+      InstanceProfileName: ec2-instance-profile
+      Path: /
+      Roles:
+        - !Ref EC2Role
+
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
+      IamInstanceProfile: !Ref EC2InstanceProfile
       SecurityGroups:
         - Ref: InstanceSecurityGroup
       KeyName: udacity # If you use another key pair name, you should change this value to match.
