@@ -346,10 +346,10 @@ jobs:
 
       - install_nodejs
       - install_awscli
-      - run:
-          name: Get backend url
-          command: |
-            # your code here
+      # - run:
+      #     name: Get backend url
+      #     command: |
+      #       # your code here
       - run:
           name: Backend smoke test.
           command: |
