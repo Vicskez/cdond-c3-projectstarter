@@ -219,7 +219,7 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image: cimg/base:2021.04
+      - image: cimg/base:stable
     steps:
       - checkout
       - add_ssh_keys:
@@ -262,7 +262,7 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: cimg/base:2021.04
+      - image: cimg/base:stable
     steps:
       - checkout
 
@@ -302,7 +302,7 @@ jobs:
                     
   deploy-backend:
     docker:
-      - image: cimg/base:2021.04
+      - image: cimg/base:stable
     steps:
       - checkout
       - add_ssh_keys:
@@ -340,7 +340,7 @@ jobs:
 
   smoke-test:
     docker:
-      - image: cimg/base:2021.04
+      - image: cimg/base:stable
     steps:
       - checkout
 
