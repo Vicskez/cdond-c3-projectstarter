@@ -9,19 +9,25 @@
     src: artifact.tar.gz
     dest: ~/backendapp
 
-- name: "Installing Dependencies"
+- name: Start npm service
   shell: |
-    cd ~/backendapp
-    npm i
-- name: "Using PM2 to execute node app"
-  shell: |
-    cd ~/backend-app/dist
-
-    cd ../
-    npm install
-    npm run build
-    pm2 stop default
     pm2 start npm -- start
+  args:
+    chdir: ~/backendapp/
+
+# - name: "Installing Dependencies"
+#   shell: |
+#     cd ~/backendapp
+#     npm i
+# - name: "Using PM2 to execute node app"
+#   shell: |
+#     cd ~/backend-app/dist
+
+#     cd ../
+#     npm install
+#     npm run build
+#     pm2 stop default
+#     pm2 start npm -- start
 
 #     sudo npm install forever -g 
 #     sudo npm install ts-node -g 
