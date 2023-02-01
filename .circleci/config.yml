@@ -429,8 +429,7 @@ jobs:
       - run:
           name: Remove old stacks and files
           command: |
-            cat /OldWorkFlowid.txt
-            OldWorkflowID="${OldWorkflowID}""
+            OldWorkflowID="${OldWorkflowID}"
             # export OldWorkflowID=$(curl --insecure https://kvdb.io/17C1TMg3R2nxiKxBqchkpo/old_workflow_id)
             echo OldWorkflowID: "$OldWorkflowId"
             echo $OldworkflowID
