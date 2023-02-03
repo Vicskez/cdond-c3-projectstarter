@@ -404,38 +404,38 @@ jobs:
 
   cleanup:
     docker:
-      - image: cimg/base:2021.04
+      - image: cimg/base:stable
     steps:
       - checkout
       - install_awscli
       - run:
           name: Get old stack workflow id
           command: |
-            # export STACKS=($(aws cloudformation list-stacks \
-            # --query "StackSummaries[*].StackName" \
-            # --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
-            # echo Stack names: "${STACKS[@]}"
-            # export OldWorkflowID=$(curl --insecure https://kvdb.io/17C1TMg3R2nxiKxBqchkpo/old_workflow_id)
-            # echo Old Workflow ID: $OldWorkflowid
+            export STACKS=($(aws cloudformation list-stacks \
+            --query "StackSummaries[*].StackName" \
+            --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
+            echo Stack names: "${STACKS[@]}"
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/17C1TMg3R2nxiKxBqchkpo/old_workflow_id)
+            echo Old Workflow ID: $OldWorkflowid
             # # export STACKS=[] #put the list of stacks here
-            export OldWorkflowID=$(aws cloudformation \
-            list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
-            --no-paginate --output text)
-            echo OldWorkflowID: "${OldWorkflowID}"
-            echo CIRCLE_WORKFLOW_ID "${CIRCLE_WORKFLOW_ID:0:7}"          
-            export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
-            --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
-            echo Stack names: "${STACKS[@]}" 
+            # export OldWorkflowID=$(aws cloudformation \
+            # list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
+            # --no-paginate --output text)
+            # echo OldWorkflowID: "${OldWorkflowID}"
+            # echo CIRCLE_WORKFLOW_ID "${CIRCLE_WORKFLOW_ID:0:7}"          
+            # export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
+            # --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
+            # echo Stack names: "${STACKS[@]}" 
       - run:
           name: Remove old stacks and files
           command: |
-            export OldWorkflowID=$(aws cloudformation \
-            list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
-            --no-paginate --output text)
-            OldWorkflowID="${OldWorkflowID}"
-            # export OldWorkflowID=$(curl --insecure https://kvdb.io/17C1TMg3R2nxiKxBqchkpo/old_workflow_id)
+            # export OldWorkflowID=$(aws cloudformation \
+            # list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
+            # --no-paginate --output text)
+            # OldWorkflowID="${OldWorkflowID}"
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/17C1TMg3R2nxiKxBqchkpo/old_workflow_id)
             echo OldWorkflowID: "$OldWorkflowId"
-            echo $OldworkflowID
+            # echo $OldworkflowID
 
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
