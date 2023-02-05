@@ -272,7 +272,6 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      # name: Install dependencies
       - install_nodejs
       - install_awscli
       - install_ansible
