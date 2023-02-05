@@ -1,0 +1,14 @@
+GITHUB URL
+URL01: https://github.com/Vicskez/cdond-c3-projectstarter.git
+
+S3 BUCKET
+URL02: http://udapeople-669c819.s3-website-us-east-1.amazonaws.com
+
+CLOUDFRONT URL
+URL3: http://d1k1p60r3rncz4.cloudfront.net
+
+BACKEND SERVER
+URL4: http://ec2-18-234-105-135.compute-1.amazonaws.com:3030/api/status
+
+PROMETHEUS SERVER URL
+URL5: http://ec2-18-232-144-165.compute-1.amazonaws.com:9090
