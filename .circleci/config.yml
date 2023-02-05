@@ -426,6 +426,7 @@ jobs:
             --stack-name InitialStack
       - destroy-environment
       - revert-migrations  
+      #test
    
   # cleanup:
   #   docker:
